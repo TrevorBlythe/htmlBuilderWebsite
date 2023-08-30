@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Website Page Builder</title>
+		<meta content="Best Free Open Source Responsive Websites Builder" name="description" />
+		<link rel="stylesheet" href="stylesheets/toastr.min.css" />
+		<link rel="stylesheet" href="stylesheets/grapes.min.css" />
+		<link rel="stylesheet" href="stylesheets/grapesjs-preset-webpage.min.css" />
+		<link rel="stylesheet" href="stylesheets/tooltip.css" />
+		<link rel="stylesheet" href="stylesheets/demos.css" />
+		<link href="https://unpkg.com/grapick/dist/grapick.min.css" rel="stylesheet" />
+		<!-- update the version number as needed -->
+		<script defer src="/__/firebase/10.0.0/firebase-app-compat.js"></script>
+		<!-- include only the Firebase features as you need -->
+		<script defer src="/__/firebase/10.0.0/firebase-auth-compat.js"></script>
+		<script defer src="/__/firebase/10.0.0/firebase-database-compat.js"></script>
+		<script defer src="/__/firebase/10.0.0/firebase-firestore-compat.js"></script>
+		<script defer src="/__/firebase/10.0.0/firebase-functions-compat.js"></script>
+		<script defer src="/__/firebase/10.0.0/firebase-messaging-compat.js"></script>
+		<script defer src="/__/firebase/10.0.0/firebase-storage-compat.js"></script>
+		<script defer src="/__/firebase/10.0.0/firebase-analytics-compat.js"></script>
+		<script defer src="/__/firebase/10.0.0/firebase-remote-config-compat.js"></script>
+		<script defer src="/__/firebase/10.0.0/firebase-performance-compat.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="js/toastr.min.js"></script>
+		<script src="js/grapes.min.js"></script>
+		<script src="js2/preset-webpage.js"></script>
+		<script src="js2/blocks.js"></script>
+		<script src="js2/forms.js"></script>
+		<script src="js2/countdown.js"></script>
+		<script src="js2/plugin-export.js"></script>
+		<script src="js2/tabs.js"></script>
+		<script src="js2/customcode.js"></script>
+		<script src="js2/touch.js"></script>
+		<script src="js2/grapesjs-parser-postcss.js"></script>
+		<script src="js2/tooltips.js"></script>
+		<script src="js2/image-editor.js"></script>
+		<script src="js2/typed.js"></script>
+		<script src="js2/style-bg.js"></script>
+
+		<style type="text/css">
+			.icons-flex {
+				background-size: 70% 65% !important;
+				height: 15px;
+				width: 17px;
+				opacity: 0.9;
+			}
+			.icon-dir-row {
+				background: url("img/flex-dir-row.png") no-repeat center;
+			}
+			.icon-dir-row-rev {
+				background: url("img/flex-dir-row-rev.png") no-repeat center;
+			}
+			.icon-dir-col {
+				background: url("img/flex-dir-col.png") no-repeat center;
+			}
+			.icon-dir-col-rev {
+				background: url("img/flex-dir-col-rev.png") no-repeat center;
+			}
+			.icon-just-start {
+				background: url("img/flex-just-start.png") no-repeat center;
+			}
+			.icon-just-end {
+				background: url("img/flex-just-end.png") no-repeat center;
+			}
+			.icon-just-sp-bet {
+				background: url("img/flex-just-sp-bet.png") no-repeat center;
+			}
+			.icon-just-sp-ar {
+				background: url("img/flex-just-sp-ar.png") no-repeat center;
+			}
+			.icon-just-sp-cent {
+				background: url("img/flex-just-sp-cent.png") no-repeat center;
+			}
+			.icon-al-start {
+				background: url("img/flex-al-start.png") no-repeat center;
+			}
+			.icon-al-end {
+				background: url("img/flex-al-end.png") no-repeat center;
+			}
+			.icon-al-str {
+				background: url("img/flex-al-str.png") no-repeat center;
+			}
+			.icon-al-center {
+				background: url("img/flex-al-center.png") no-repeat center;
+			}
+
+			[data-tooltip]::after {
+				background: rgba(51, 51, 51, 0.9);
+			}
+
+			.gjs-pn-commands {
+				min-height: 40px;
+			}
+
+			#gjs-sm-float {
+				display: none;
+			}
+
+			.gjs-logo-version {
+				background-color: #756467;
+			}
+
+			.gjs-pn-btn.gjs-pn-active {
+				box-shadow: none;
+			}
+
+			.CodeMirror {
+				min-height: 450px;
+				margin-bottom: 8px;
+			}
+			.grp-handler-close {
+				background-color: transparent;
+				color: #ddd;
+			}
+
+			.grp-handler-cp-wrap {
+				border-color: transparent;
+			}
+		</style>
+	</head>
+	<body>
+		<div style="display: none">
+			<div class="gjs-logo-cont">
+				<a href="index.html"><img class="gjs-logo" src="img/grapesjs-logo-cl.png" /></a>
+				<div class="gjs-logo-version"></div>
+			</div>
+		</div>
+		<div class="ad-cont">
+			<!-- <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=grapesjscom" id="_carbonads_js"></script> -->
+			<div id="native-carbon"></div>
+			<script async type="text/javascript" src="js/carbon-v2.js"></script>
+		</div>
+
+		<div id="gjs" style="height: 0px; overflow: hidden">
+			<h1 id="sus">Hello world</h1>
+		</div>
+
+		<div id="savedProjects" class="savedProjects" hidden>
+			<h2>SAVED TEMPLATES</h2>
+			<div class="savedProject">
+				<h5 id="projectName1">Project Slot 1</h5>
+				<button onclick="loadProject('projOne');">Load</button>
+				<button onclick="saveProject('projOne');">Save</button>
+			</div>
+
+			<div class="savedProject" id="projectName2">
+				<h5>Project Slot 2</h5>
+				<button onclick="loadProject('projTwo');">Load</button>
+				<button onclick="saveProject('projTwo');">Save</button>
+			</div>
+
+			<div class="savedProject" id="projectName3">
+				<h5>Project Slot 3</h5>
+				<button onclick="loadProject('projThree');">Load</button>
+				<button onclick="saveProject('projThree');">Save</button>
+			</div>
+
+			<p style="text-align: center" id="feedback">Everybody gets three Project slots.</p>
+		</div>
+
+		<script>
+			var db; //global var
+			document.addEventListener("DOMContentLoaded", function () {
+				// const loadEl = document.querySelector("#load");
+				// Your web app's Firebase configuration
+
+				const firebaseConfig = {
+					apiKey: "AIzaSyDq-HHmSa_VAKvMd8bEY5O2wsKw7CCAFtk",
+
+					authDomain: "htmlbuilder-6c671.firebaseapp.com",
+
+					projectId: "htmlbuilder-6c671",
+
+					storageBucket: "htmlbuilder-6c671.appspot.com",
+
+					messagingSenderId: "992810014008",
+
+					appId: "1:992810014008:web:faa73050d28f42037c9dcd",
+				};
+
+				// Initialize Firebase
+
+				const app = firebase.initializeApp(firebaseConfig);
+				db = firebase.firestore();
+
+				// db.collection("users")
+				// 	.doc("test")
+				// 	.set({
+				// 		first: "Alan",
+				// 		middle: "Mathison",
+				// 		last: "Turing",
+				// 		born: 1912,
+				// 	})
+				// 	.then(() => {
+				// 		console.log("Document written");
+				// 	})
+				// 	.catch((error) => {
+				// 		console.error("Error adding document: ", error);
+				// 	});
+
+				// db.collection("users")
+				// 	.get()
+				// 	.then((querySnapshot) => {
+				// 		querySnapshot.forEach((doc) => {
+				// 			console.log(`${doc.id} => ${doc.data()}`);
+				// 		});
+				// 	});
+
+				// // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+				// // The Firebase SDK is initialized and available here!
+				//
+				// firebase.auth().onAuthStateChanged(user => { });
+				// firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+				// firebase.firestore().doc('/foo/bar').get().then(() => { });
+				// firebase.functions().httpsCallable('yourFunction')().then(() => { });
+				// firebase.messaging().requestPermission().then(() => { });
+				// firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+				// firebase.analytics(); // call to activate
+				// firebase.analytics().logEvent('tutorial_completed');
+				// firebase.performance(); // call to activate
+				//
+				// // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+				try {
+					// let app = firebase.app();
+					let features = [
+						"auth",
+						"database",
+						"firestore",
+						"functions",
+						"messaging",
+						"storage",
+						"analytics",
+						"remoteConfig",
+						"performance",
+					].filter((feature) => typeof app[feature] === "function");
+					// loadEl.textContent = `Firebase SDK loaded with ${features.join(", ")}`;
+				} catch (e) {
+					console.error(e);
+					// loadEl.textContent = "Error loading the Firebase SDK, check the console.";
+				}
+
+				//sign in stuff
+			});
+
+			var saveProject = function (projectName) {
+				document.getElementById("feedback").innerHTML = "saving...";
+				let updateObj = { projData: JSON.stringify(editor.getProjectData()) };
+				db.collection(email)
+					.doc(projectName)
+					.set(updateObj)
+					.then(() => {
+						console.log("Document written");
+						document.getElementById("feedback").innerHTML = "Finished Saving to " + projectName;
+					})
+					.catch((error) => {
+						console.error("Error adding document: ", error);
+						document.getElementById("feedback").innerHTML = "Error Saving! " + error;
+					});
+			};
+
+			var loadProject = function (projectName) {
+				document.getElementById("feedback").innerHTML = "loading...";
+				var docRef = db.collection(email).doc(projectName);
+
+				docRef
+					.get()
+					.then((doc) => {
+						if (doc.exists) {
+							// console.log(JSON.stringify(doc.data().projData));
+							console.log("Document data:", editor.loadProjectData(JSON.parse(doc.data().projData)));
+							document.getElementById("feedback").innerHTML = "Finished Loading " + projectName;
+						} else {
+							console.log("No such document!");
+							document.getElementById("feedback").innerHTML = "No such project exists";
+						}
+					})
+					.catch((error) => {
+						console.log("Error getting document:", error);
+						document.getElementById("feedback").innerHTML = "Error Loading! " + error;
+					});
+			};
+		</script>
+		<script type="text/javascript">
+			var email = "notsignedin";
+			var lp = "./img/";
+			var plp = "https://via.placeholder.com/350x250/";
+			var images = [
+				lp + "team1.jpg",
+				// lp + "team2.jpg",
+				// lp + "team3.jpg",
+				// plp + "78c5d6/fff",
+				// plp + "459ba8/fff",
+				// plp + "79c267/fff",
+				// plp + "c5d647/fff",
+				// plp + "f28c33/fff",
+				// plp + "e868a2/fff",
+				// plp + "cc4360/fff",
+				// lp + "work-desk.jpg",
+				// lp + "phone-app.png",
+				// lp + "bg-gr-v.png",
+			];
+
+			var editor = grapesjs.init({
+				height: "100%",
+				width: "100%",
+				container: "#gjs",
+				fromElement: true,
+				showOffsets: true,
+				assetManager: {
+					embedAsBase64: true,
+					assets: images,
+				},
+				selectorManager: { componentFirst: true },
+				styleManager: {
+					sectors: [
+						{
+							name: "General",
+							properties: [
+								{
+									extend: "float",
+									type: "radio",
+									default: "none",
+									options: [
+										{ value: "none", className: "fa fa-times" },
+										{ value: "left", className: "fa fa-align-left" },
+										{ value: "right", className: "fa fa-align-right" },
+									],
+								},
+								"display",
+								{ extend: "position", type: "select" },
+								"top",
+								"right",
+								"left",
+								"bottom",
+							],
+						},
+						{
+							name: "Dimension",
+							open: false,
+							properties: [
+								"width",
+								{
+									id: "flex-width",
+									type: "integer",
+									name: "Width",
+									units: ["px", "%"],
+									property: "flex-basis",
+									toRequire: 1,
+								},
+								"height",
+								"max-width",
+								"min-height",
+								"margin",
+								"padding",
+							],
+						},
+						{
+							name: "Typography",
+							open: false,
+							properties: [
+								"font-family",
+								"font-size",
+								"font-weight",
+								"letter-spacing",
+								"color",
+								"line-height",
+								{
+									extend: "text-align",
+									options: [
+										{ id: "left", label: "Left", className: "fa fa-align-left" },
+										{ id: "center", label: "Center", className: "fa fa-align-center" },
+										{ id: "right", label: "Right", className: "fa fa-align-right" },
+										{ id: "justify", label: "Justify", className: "fa fa-align-justify" },
+									],
+								},
+								{
+									property: "text-decoration",
+									type: "radio",
+									default: "none",
+									options: [
+										{ id: "none", label: "None", className: "fa fa-times" },
+										{ id: "underline", label: "underline", className: "fa fa-underline" },
+										{ id: "line-through", label: "Line-through", className: "fa fa-strikethrough" },
+									],
+								},
+								"text-shadow",
+							],
+						},
+						{
+							name: "Decorations",
+							open: false,
+							properties: [
+								"opacity",
+								"border-radius",
+								"border",
+								"box-shadow",
+								"background", // { id: 'background-bg', property: 'background', type: 'bg' }
+							],
+						},
+						{
+							name: "Extra",
+							open: false,
+							buildProps: ["transition", "perspective", "transform"],
+						},
+						{
+							name: "Flex",
+							open: false,
+							properties: [
+								{
+									name: "Flex Container",
+									property: "display",
+									type: "select",
+									defaults: "block",
+									list: [
+										{ value: "block", name: "Disable" },
+										{ value: "flex", name: "Enable" },
+									],
+								},
+								{
+									name: "Flex Parent",
+									property: "label-parent-flex",
+									type: "integer",
+								},
+								{
+									name: "Direction",
+									property: "flex-direction",
+									type: "radio",
+									defaults: "row",
+									list: [
+										{
+											value: "row",
+											name: "Row",
+											className: "icons-flex icon-dir-row",
+											title: "Row",
+										},
+										{
+											value: "row-reverse",
+											name: "Row reverse",
+											className: "icons-flex icon-dir-row-rev",
+											title: "Row reverse",
+										},
+										{
+											value: "column",
+											name: "Column",
+											title: "Column",
+											className: "icons-flex icon-dir-col",
+										},
+										{
+											value: "column-reverse",
+											name: "Column reverse",
+											title: "Column reverse",
+											className: "icons-flex icon-dir-col-rev",
+										},
+									],
+								},
+								{
+									name: "Justify",
+									property: "justify-content",
+									type: "radio",
+									defaults: "flex-start",
+									list: [
+										{
+											value: "flex-start",
+											className: "icons-flex icon-just-start",
+											title: "Start",
+										},
+										{
+											value: "flex-end",
+											title: "End",
+											className: "icons-flex icon-just-end",
+										},
+										{
+											value: "space-between",
+											title: "Space between",
+											className: "icons-flex icon-just-sp-bet",
+										},
+										{
+											value: "space-around",
+											title: "Space around",
+											className: "icons-flex icon-just-sp-ar",
+										},
+										{
+											value: "center",
+											title: "Center",
+											className: "icons-flex icon-just-sp-cent",
+										},
+									],
+								},
+								{
+									name: "Align",
+									property: "align-items",
+									type: "radio",
+									defaults: "center",
+									list: [
+										{
+											value: "flex-start",
+											title: "Start",
+											className: "icons-flex icon-al-start",
+										},
+										{
+											value: "flex-end",
+											title: "End",
+											className: "icons-flex icon-al-end",
+										},
+										{
+											value: "stretch",
+											title: "Stretch",
+											className: "icons-flex icon-al-str",
+										},
+										{
+											value: "center",
+											title: "Center",
+											className: "icons-flex icon-al-center",
+										},
+									],
+								},
+								{
+									name: "Flex Children",
+									property: "label-parent-flex",
+									type: "integer",
+								},
+								{
+									name: "Order",
+									property: "order",
+									type: "integer",
+									defaults: 0,
+									min: 0,
+								},
+								{
+									name: "Flex",
+									property: "flex",
+									type: "composite",
+									properties: [
+										{
+											name: "Grow",
+											property: "flex-grow",
+											type: "integer",
+											defaults: 0,
+											min: 0,
+										},
+										{
+											name: "Shrink",
+											property: "flex-shrink",
+											type: "integer",
+											defaults: 0,
+											min: 0,
+										},
+										{
+											name: "Basis",
+											property: "flex-basis",
+											type: "integer",
+											units: ["px", "%", ""],
+											unit: "",
+											defaults: "auto",
+										},
+									],
+								},
+								{
+									name: "Align",
+									property: "align-self",
+									type: "radio",
+									defaults: "auto",
+									list: [
+										{
+											value: "auto",
+											name: "Auto",
+										},
+										{
+											value: "flex-start",
+											title: "Start",
+											className: "icons-flex icon-al-start",
+										},
+										{
+											value: "flex-end",
+											title: "End",
+											className: "icons-flex icon-al-end",
+										},
+										{
+											value: "stretch",
+											title: "Stretch",
+											className: "icons-flex icon-al-str",
+										},
+										{
+											value: "center",
+											title: "Center",
+											className: "icons-flex icon-al-center",
+										},
+									],
+								},
+							],
+						},
+					],
+				},
+				plugins: [
+					"gjs-blocks-basic",
+					"grapesjs-plugin-forms",
+					"grapesjs-component-countdown",
+					"grapesjs-plugin-export",
+					"grapesjs-tabs",
+					"grapesjs-custom-code",
+					"grapesjs-touch",
+					"grapesjs-parser-postcss",
+					"grapesjs-tooltip",
+					"grapesjs-tui-image-editor",
+					"grapesjs-typed",
+					"grapesjs-style-bg",
+					"grapesjs-preset-webpage",
+				],
+				pluginsOpts: {
+					"gjs-blocks-basic": { flexGrid: true },
+					"grapesjs-tui-image-editor": {
+						script: [
+							// 'https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.6.7/fabric.min.js',
+							"https://uicdn.toast.com/tui.code-snippet/v1.5.2/tui-code-snippet.min.js",
+							"https://uicdn.toast.com/tui-color-picker/v2.2.7/tui-color-picker.min.js",
+							"https://uicdn.toast.com/tui-image-editor/v3.15.2/tui-image-editor.min.js",
+						],
+						style: [
+							"https://uicdn.toast.com/tui-color-picker/v2.2.7/tui-color-picker.min.css",
+							"https://uicdn.toast.com/tui-image-editor/v3.15.2/tui-image-editor.min.css",
+						],
+					},
+					"grapesjs-tabs": {
+						tabsBlock: { category: "Extra" },
+					},
+					"grapesjs-typed": {
+						block: {
+							category: "Extra",
+							content: {
+								type: "typed",
+								"type-speed": 40,
+								strings: ["Text row one", "Text row two", "Text row three"],
+							},
+						},
+					},
+					"grapesjs-preset-webpage": {
+						modalImportTitle: "Import Template",
+						modalImportLabel:
+							'<div style="margin-bottom: 10px; font-size: 13px;">Paste here your HTML/CSS and click Import</div>',
+						modalImportContent: function (editor) {
+							return editor.getHtml() + "<style>" + editor.getCss() + "</style>";
+						},
+					},
+				},
+			});
+
+			editor.I18n.addMessages({
+				en: {
+					styleManager: {
+						properties: {
+							"background-repeat": "Repeat",
+							"background-position": "Position",
+							"background-attachment": "Attachment",
+							"background-size": "Size",
+						},
+					},
+				},
+			});
+
+			var pn = editor.Panels;
+			var modal = editor.Modal;
+			var cmdm = editor.Commands;
+
+			// Update canvas-clear command
+			cmdm.add("canvas-clear", function () {
+				if (confirm("Are you sure to clean the canvas?")) {
+					editor.runCommand("core:canvas-clear");
+					setTimeout(function () {
+						localStorage.clear();
+					}, 0);
+				}
+			});
+
+			// // Add info command
+			// var mdlClass = "gjs-mdl-dialog-sm";
+			// var infoContainer = document.getElementById("info-panel");
+
+			// cmdm.add("open-info", function () {
+			// 	var mdlDialog = document.querySelector(".gjs-mdl-dialog");
+			// 	mdlDialog.className += " " + mdlClass;
+			// 	infoContainer.style.display = "block";
+			// 	modal.setTitle("About this demo");
+			// 	modal.setContent(infoContainer);
+			// 	modal.open();
+			// 	modal.getModel().once("change:open", function () {
+			// 		mdlDialog.className = mdlDialog.className.replace(mdlClass, "");
+			// 	});
+			// });
+
+			// pn.addButton("options", {
+			// 	id: "open-info",
+			// 	className: "fa fa-question-circle",
+			// 	command: function () {
+			// 		editor.runCommand("open-info");
+			// 	},
+			// 	attributes: {
+			// 		title: "About",
+			// 		"data-tooltip-pos": "bottom",
+			// 	},
+			// });
+
+			// Simple warn notifier
+			var origWarn = console.warn;
+			toastr.options = {
+				closeButton: true,
+				preventDuplicates: true,
+				showDuration: 250,
+				hideDuration: 150,
+			};
+			console.warn = function (msg) {
+				if (msg.indexOf("[undefined]") == -1) {
+					toastr.warning(msg);
+				}
+				origWarn(msg);
+			};
+
+			// Add and beautify tooltips
+			[
+				["sw-visibility", "Show Borders"],
+				["preview", "Preview"],
+				["fullscreen", "Fullscreen"],
+				["export-template", "Export"],
+				["undo", "Undo"],
+				["redo", "Redo"],
+				["gjs-open-import-webpage", "Import"],
+				["canvas-clear", "Clear canvas"],
+			].forEach(function (item) {
+				pn.getButton("options", item[0]).set("attributes", { title: item[1], "data-tooltip-pos": "bottom" });
+			});
+			[
+				["open-sm", "Style Manager"],
+				["open-layers", "Layers"],
+				["open-blocks", "Blocks"],
+			].forEach(function (item) {
+				pn.getButton("views", item[0]).set("attributes", { title: item[1], "data-tooltip-pos": "bottom" });
+			});
+			var titles = document.querySelectorAll("*[title]");
+
+			for (var i = 0; i < titles.length; i++) {
+				var el = titles[i];
+				var title = el.getAttribute("title");
+				title = title ? title.trim() : "";
+				if (!title) break;
+				el.setAttribute("data-tooltip", title);
+				el.setAttribute("title", "");
+			}
+
+			// Store and load events
+			editor.on("storage:load", function (e) {
+				// console.log("Loaded ", e);
+			});
+			editor.on("storage:store", function (e) {
+				// console.log("Stored ", e);
+			});
+
+			// Do stuff on load
+			editor.on("load", function () {
+				var $ = grapesjs.$;
+
+				// Show borders by default
+				pn.getButton("options", "sw-visibility").set("active", 1);
+
+				// Show logo with the version
+				var logoCont = document.querySelector(".gjs-logo-cont");
+				// logoCont.style.hidden = true;
+				document.querySelector(".gjs-logo-version").innerHTML = "v" + grapesjs.version;
+				var logoPanel = document.querySelector(".gjs-pn-commands");
+				logoPanel.appendChild(logoCont);
+
+				// Load and show settings and style manager
+				var openTmBtn = pn.getButton("views", "open-tm");
+				openTmBtn && openTmBtn.set("active", 1);
+				var openSm = pn.getButton("views", "open-sm");
+				openSm && openSm.set("active", 1);
+				var openLayers = pn.getButton("views", "open-layers");
+				openLayers && openLayers.set("active", 1);
+
+				// Remove trait view
+				pn.removeButton("views", "open-tm");
+
+				// Add Settings Sector
+				var traitsSector = $(
+					'<div class="gjs-sm-sector no-select">' +
+						'<div class="gjs-sm-sector-title"><span class="icon-settings fa fa-cog"></span> <span class="gjs-sm-sector-label">Settings</span></div>' +
+						'<div class="gjs-sm-properties" style="display: none;"></div></div>'
+				);
+				var traitsProps = traitsSector.find(".gjs-sm-properties");
+				traitsProps.append($(".gjs-trt-traits"));
+				$(".gjs-sm-sectors").before(traitsSector);
+				traitsSector.find(".gjs-sm-sector-title").on("click", function () {
+					var traitStyle = traitsProps.get(0).style;
+					var hidden = traitStyle.display == "none";
+					if (hidden) {
+						traitStyle.display = "block";
+					} else {
+						traitStyle.display = "none";
+					}
+				});
+
+				// Open block manager
+				var openBlocksBtn = editor.Panels.getButton("views", "open-sm");
+				openBlocksBtn && openBlocksBtn.set("active", 1);
+
+				// console.log(openSm);
+				// console.log(openBlocksBtn);
+
+				// Move Ad
+				// $("#gjs").append($(".ad-cont"));
+				//document.querySelectorAll('.gjs-off-prv.fa.fa-eye-slash')
+				for (var i = 0; i < document.querySelectorAll(".gjs-pn-btn").length; i++) {
+					let elem = document.querySelectorAll(".gjs-pn-btn")[i];
+					if (elem.getAttribute("data-tooltip") == "Preview") {
+						elem.addEventListener("click", function () {
+							console.log("Button Clicked");
+
+							let frame = document.querySelectorAll(".gjs-cv-canvas__frames")[0];
+							frame.style.width = "100%";
+							frame.style.height = "100%";
+							frame.style.marginLeft = "0";
+
+							for (var i = 0; i < document.querySelectorAll(".gjs-off-prv.fa.fa-eye-slash").length; i++) {
+								let elem = document.querySelectorAll(".gjs-off-prv.fa.fa-eye-slash")[i];
+								if (!elem.sus) {
+									elem.addEventListener("click", function () {
+										console.log("Button Clicked Out");
+
+										frame.style.width = "80%";
+										frame.style.height = "80%";
+										frame.style.marginLeft = "20%";
+									});
+									elem.sus = true;
+								}
+							}
+						});
+					}
+				}
+				document.querySelectorAll(".gjs-pn-panel.gjs-pn-views-container.gjs-one-bg.gjs-two-color")[0].children[3].style.width =
+					"15vw";
+				document.querySelectorAll(".gjs-pn-panel.gjs-pn-views-container.gjs-one-bg.gjs-two-color")[0].children[3].style.position =
+					"fixed";
+
+				document.querySelectorAll(".gjs-pn-panel.gjs-pn-views-container.gjs-one-bg.gjs-two-color")[0].children[3].style.display =
+					"";
+				document.querySelectorAll(".gjs-pn-panel.gjs-pn-views-container.gjs-one-bg.gjs-two-color")[0].children[3].style.right =
+					"0";
+
+				document.querySelectorAll(".gjs-pn-panel.gjs-pn-views-container.gjs-one-bg.gjs-two-color")[0].children[0].style.width =
+					"15vw";
+				document.querySelectorAll(".gjs-pn-panel.gjs-pn-views-container.gjs-one-bg.gjs-two-color")[0].children[0].style.position =
+					"fixed";
+				document.querySelectorAll(".gjs-pn-panel.gjs-pn-views-container.gjs-one-bg.gjs-two-color")[0].children[0].style.left =
+					"0";
+				document.querySelectorAll(".gjs-pn-panel.gjs-pn-views-container.gjs-one-bg.gjs-two-color")[0].children[0].style.overflow =
+					"scroll";
+				document.querySelectorAll(".gjs-pn-panel.gjs-pn-views-container.gjs-one-bg.gjs-two-color")[0].children[0].style.height =
+					"93vh";
+				document.querySelectorAll(".gjs-pn-panel.gjs-pn-views-container.gjs-one-bg.gjs-two-color")[0].children[1].style.display =
+					"";
+				//display: block; position:fixed; bottom:0; overflow:scroll; left:15vw;top:85vh;
+				document.querySelectorAll(".gjs-pn-panel.gjs-pn-views-container.gjs-one-bg.gjs-two-color")[0].children[1].style.position =
+					"fixed";
+				document.querySelectorAll(".gjs-pn-panel.gjs-pn-views-container.gjs-one-bg.gjs-two-color")[0].children[1].style.bottom =
+					"0";
+				document.querySelectorAll(".gjs-pn-panel.gjs-pn-views-container.gjs-one-bg.gjs-two-color")[0].children[1].style.overflow =
+					"scroll";
+				document.querySelectorAll(".gjs-pn-panel.gjs-pn-views-container.gjs-one-bg.gjs-two-color")[0].children[1].style.left =
+					"15vw";
+				document.querySelectorAll(".gjs-pn-panel.gjs-pn-views-container.gjs-one-bg.gjs-two-color")[0].children[1].style.width =
+					"70vw";
+				// document.querySelectorAll(".gjs-pn-panel.gjs-pn-views-container.gjs-one-bg.gjs-two-color")[0].children[1].style.height =
+				// 	"70vh";
+
+				document.querySelectorAll(".gjs-pn-panel.gjs-pn-views-container.gjs-one-bg.gjs-two-color")[0].children[1].style.top =
+					"82vh";
+
+				//three buttons at top right
+				setTimeout(() => {
+					window.provider = new firebase.auth.GoogleAuthProvider();
+					$(document.querySelectorAll(".gjs-pn-buttons")[3].children[2]).hide();
+					for (var i = 0; i < 2; i++) {
+						$(document.querySelectorAll(".gjs-pn-buttons")[3].children[i]).replaceWith(
+							$(document.querySelectorAll(".gjs-pn-buttons")[3].children[i]).clone()
+						);
+						if (i == 0) {
+							$(document.querySelectorAll(".gjs-pn-buttons")[3].children[i]).html("sign in");
+
+							$(document.querySelectorAll(".gjs-pn-buttons")[3].children[i]).on("click", () => {
+								firebase
+									.auth()
+									.signInWithPopup(window.provider)
+									.then((result) => {
+										/** @type {firebase.auth.OAuthCredential} */
+										var credential = result.credential;
+
+										// This gives you a Google Access Token. You can use it to access the Google API.
+										var token = credential.accessToken;
+										// The signed-in user info.
+										var user = result.user;
+										// IdP data available in result.additionalUserInfo.profile.
+										// ...
+										// console.log(credential);
+										console.log(result);
+										// console.log();
+										email = result.user._delegate.email;
+										// console.log(result.user._delegate);
+										$(document.querySelectorAll(".gjs-pn-buttons")[3].children[0]).html(
+											`<img style = "width:1.5vw;height:1.5vw;" src = ${result.user._delegate.photoURL}>`
+										);
+										$(document.querySelectorAll(".gjs-pn-buttons")[3].children[1])
+											.off("click")
+											.on("click", () => {
+												// alert("Saving!");
+												// $(document.getElementById("savedProjects")).toggle();
+												if ($(document.getElementById("savedProjects"))[0].style.display == "") {
+													$(document.getElementById("savedProjects"))[0].style.display = "block";
+													$($(document.getElementById("savedProjects"))[0]).addClass("comeFromTop");
+												} else {
+													$(document.getElementById("savedProjects"))[0].style.display = "";
+													$($(document.getElementById("savedProjects"))[0]).removeClass("comeFromTop");
+												}
+											});
+									})
+									.catch((error) => {
+										// Handle Errors here.
+										var errorCode = error.code;
+										var errorMessage = error.message;
+										// The email of the user's account used.
+										var email = error.email;
+										// The firebase.auth.AuthCredential type that was used.
+										var credential = error.credential;
+										// ...
+										console.log(errorCode + " " + errorMessage);
+									});
+							});
+						}
+						if (i == 1) {
+							$(document.querySelectorAll(".gjs-pn-buttons")[3].children[i]).html("Load/Save");
+							$(document.querySelectorAll(".gjs-pn-buttons")[3].children[i]).on("click", () => {
+								alert("Sign in first");
+							});
+						}
+					}
+				}, 0);
+				document.body.style.display = "block";
+			});
+		</script>
+		<style>
+			body {
+				display: none;
+			}
+
+			.gjs-cv-canvas__frames {
+				display: relative;
+				z-index: 10;
+				width: 81%;
+				height: 81%;
+				margin-left: 18%;
+			}
+			.gjs-title {
+				display: none;
+			}
+			.gjs-one-bg {
+				background-color: #333d37;
+			}
+			.gjs-two-color {
+				color: #e5eafa;
+			}
+			.savedProjects {
+				background-color: #393939;
+				color: #e5eafa;
+				position: fixed;
+				width: 40vw;
+				height: 60vh;
+				overflow-y: scroll;
+				left: 30vw;
+				top: 12vh;
+				z-index: 3;
+			}
+			.savedProject {
+				border: 2px solid grey;
+				display: flex; /* or inline-flex */
+				flex-direction: row;
+				margin-top: 2vh;
+			}
+			.savedProject h5 {
+				width: 40%;
+				/* margin-right: 25%; */
+				text-align: center;
+				/* float: left; */
+				/* height: 10%; */
+			}
+
+			.savedProjects h2 {
+				text-align: center;
+				/* float: left; */
+				/* height: 10%; */
+			}
+			.savedProject button {
+				order: 1;
+				width: 25%;
+
+				display: inline-block;
+				outline: none;
+				cursor: pointer;
+				font-weight: 600;
+				border-radius: 3px;
+				padding: 12px 24px;
+				border: 0;
+				color: #3a4149;
+				background: #e7ebee;
+				line-height: 1.15;
+				font-size: 16px;
+				margin-right: 1vw;
+
+				/* float: right; */
+			}
+
+			.savedProject button:hover {
+				transition: all 0.1s ease;
+				background: #9da2a5;
+
+				box-shadow: 0 0 0 0 #fff, 0 0 0 3px #1de9b6;
+			}
+
+			@keyframes comeFromTop {
+				from {
+					top: 0;
+				}
+				to {
+					top: 12vh;
+				}
+			}
+			.comeFromTop {
+				animation-name: comeFromTop;
+				animation-duration: 1s;
+			}
+			/* .gjs-pn-panel.gjs-pn-views-container.gjs-one-bg.gjs-two-color {
+				display: relative;
+				z-index: 10;
+			} */
+			/* .gjs-pn-panel.gjs-pn-views-container.gjs-one-bg.gjs-two-color {
+				width: 100vw;
+				height: 100vh;
+				display: relative;
+				z-index: 1;
+				background-color: blue;
+			} */
+			.gjs-blocks-c {
+				display: flex;
+				flex-wrap: nowrap;
+				justify-content: flex-start;
+				flex: 0 0 auto;
+			}
+			.gjs-block {
+				margin: 5px;
+				width: 60%;
+			}
+			div.gjs-block-category:nth-child(1) > div:nth-child(2) {
+				overflow-x: scroll;
+				overflow-y: hidden;
+				white-space: nowrap;
+			}
+
+			.gjs-category-open,
+			.gjs-block-category.gjs-open,
+			.gjs-sm-sector.gjs-sm-open {
+				border-bottom: none;
+				display: block;
+				flex-direction: row;
+				/* flex: 0; */
+				/* flex: 0 0 auto; */
+				/* overflow-y: hidden; */
+			}
+			.gjs-block-categories {
+				display: flex;
+				flex-direction: row;
+			}
+			.gjs-four-bg {
+				background-color: #12d9cf;
+			}
+			.gjs-four-color {
+				color: #12d9cf;
+			}
+			.gjs-four-color-h:hover {
+				color: #12d9cf;
+			}
+			.gjs-logo-cont {
+				display: none;
+			}
+		</style>
+	</body>
+</html>
